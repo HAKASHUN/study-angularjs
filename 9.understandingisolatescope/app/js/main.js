@@ -1,0 +1,23 @@
+var app = angular.module('choreApp', []);
+
+app.controller('ChoreCtrl', function($scope){
+  $scope.logChore = function(chore) {
+    alert(chore + ' is done!');
+  };
+
+  $scope.hoge = 'foo';
+});
+
+
+app.directive('kid', function(){
+  return {
+    restrict: 'E',
+    scope: {
+      done: '&'
+    },
+    template: '<input type="text" ng-model="chore">' +
+      '{{chore}}' +
+      '<div class="button" ng-click="done({chore:chore})">done!</div>'
+  }
+});
+
